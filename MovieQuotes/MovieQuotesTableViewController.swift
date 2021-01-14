@@ -35,9 +35,13 @@ class MovieQuotesTableViewController: UITableViewController {
         let submitAction = UIAlertAction(title: "Create Quote", style: .default) { (action) in
             let quoteTextField = alertController.textFields![0] as UITextField
             let movieTextField = alertController.textFields![1] as UITextField
-            let newMovieQuote = MovieQuote(quote: quoteTextField.text!, movie: movieTextField.text!)
-            self.movieQuotes.insert(newMovieQuote, at: 0)
-            self.tableView.reloadData()
+//            let newMovieQuote = MovieQuote(quote: quoteTextField.text!, movie: movieTextField.text!)
+//            self.movieQuotes.insert(newMovieQuote, at: 0)
+//            self.tableView.reloadData()
+            self.movieQuotesRef.addDocument(data: [
+                "quote": quoteTextField.text!,
+                "movie": movieTextField.text!,
+                "created": Timestamp.init()])
         }
         alertController.addAction(cancelAction)
         alertController.addAction(submitAction)
@@ -58,8 +62,10 @@ class MovieQuotesTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            movieQuotes.remove(at: indexPath.row)
-            tableView.reloadData()
+//            movieQuotes.remove(at: indexPath.row)
+//            tableView.reloadData()
+            let movieQuoteToDelete = movieQuotes[indexPath.row]
+            movieQuotesRef.document(movieQuoteToDelete.id!).delete()
         }
     }
     
@@ -74,12 +80,12 @@ class MovieQuotesTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        movieQuotesRef.addSnapshotListener { (querySnapshot, error) in
+        movieQuotesRef.order(by: "created", descending: true).limit(to: 50).addSnapshotListener { (querySnapshot, error) in
             if let querySnapshot = querySnapshot {
                 self.movieQuotes.removeAll()
                 querySnapshot.documents.forEach { (documentSnapshot) in
-                    print(documentSnapshot.documentID)
-                    print(documentSnapshot.data())
+//                    print(documentSnapshot.documentID)
+//                    print(documentSnapshot.data())
                     self.movieQuotes.append(MovieQuote(documentSnapshot: documentSnapshot))
                 }
                 self.tableView.reloadData()
