@@ -44,7 +44,9 @@ class MovieQuotesTableViewController: UITableViewController {
             self.movieQuotesRef.addDocument(data: [
                 "quote": quoteTextField.text!,
                 "movie": movieTextField.text!,
-                "created": Timestamp.init()])
+                "created": Timestamp.init(),
+                "author": Auth.auth().currentUser!.uid
+            ])
         }
         alertController.addAction(cancelAction)
         alertController.addAction(submitAction)
