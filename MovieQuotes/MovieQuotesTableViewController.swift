@@ -15,6 +15,7 @@ class MovieQuotesTableViewController: UITableViewController {
     var movieQuotes = [MovieQuote]()
     var movieQuotesRef: CollectionReference!
     var movieQuoteListener: ListenerRegistration!
+    var isShowingAllQuotes = true
     
     
     override func viewDidLoad() {
@@ -30,12 +31,15 @@ class MovieQuotesTableViewController: UITableViewController {
     
     @objc func showMenu() {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let submitAction = UIAlertAction(title: "Create Quote", style: .default) { (action) in
+        alertController.addAction(UIAlertAction(title: "Create Quote", style: .default) { (action) in
             self.showAddQuoteDialog()
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(cancelAction)
-        alertController.addAction(submitAction)
+        })
+        alertController.addAction(UIAlertAction(title: self.isShowingAllQuotes ? "Show only my quotes" : "Show all quotes", style: .default) { (action) in
+            //Toggle show all vs show mine and update list
+            self.isShowingAllQuotes = !self.isShowingAllQuotes
+            self.startListening()
+        })
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alertController, animated: true, completion: nil)
     }
     
@@ -64,6 +68,30 @@ class MovieQuotesTableViewController: UITableViewController {
         alertController.addAction(cancelAction)
         alertController.addAction(submitAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func startListening() {
+        if movieQuoteListener != nil {
+            movieQuoteListener.remove()
+        }
+        var query = movieQuotesRef.order(by: "created", descending: true).limit(to: 50)
+        if !isShowingAllQuotes {
+            query = query.whereField("author", isEqualTo: Auth.auth().currentUser!.uid)
+        }
+        movieQuoteListener = query.addSnapshotListener { (querySnapshot, error) in
+            if let querySnapshot = querySnapshot {
+                self.movieQuotes.removeAll()
+                querySnapshot.documents.forEach { (documentSnapshot) in
+//                    print(documentSnapshot.documentID)
+//                    print(documentSnapshot.data())
+                    self.movieQuotes.append(MovieQuote(documentSnapshot: documentSnapshot))
+                }
+                self.tableView.reloadData()
+            } else {
+                print("Error getting MovieQuotes \(error)")
+                return
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -118,20 +146,7 @@ class MovieQuotesTableViewController: UITableViewController {
         }
         
 //        tableView.reloadData()
-        movieQuoteListener = movieQuotesRef.order(by: "created", descending: true).limit(to: 50).addSnapshotListener { (querySnapshot, error) in
-            if let querySnapshot = querySnapshot {
-                self.movieQuotes.removeAll()
-                querySnapshot.documents.forEach { (documentSnapshot) in
-//                    print(documentSnapshot.documentID)
-//                    print(documentSnapshot.data())
-                    self.movieQuotes.append(MovieQuote(documentSnapshot: documentSnapshot))
-                }
-                self.tableView.reloadData()
-            } else {
-                print("Error getting MovieQuotes \(error)")
-                return
-            }
-        }
+        startListening()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
