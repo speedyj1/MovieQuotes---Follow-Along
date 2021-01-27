@@ -131,21 +131,26 @@ class MovieQuotesTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if Auth.auth().currentUser == nil {
-            //You are not signed in. Sign in anonymously
-            print("Singing in")
-            Auth.auth().signInAnonymously { (authResult, error) in
-                if let error = error {
-                    print("Error with anonymous auth! \(error)")
-                    return
-                }
-                print("Success you are signed in")
-            }
-        } else {
-            //You are signed in
-        }
+//        if Auth.auth().currentUser == nil {
+//            //You are not signed in. Sign in anonymously
+//            print("Singing in")
+//            Auth.auth().signInAnonymously { (authResult, error) in
+//                if let error = error {
+//                    print("Error with anonymous auth! \(error)")
+//                    return
+//                }
+//                print("Success you are signed in")
+//            }
+//        } else {
+//            //You are signed in
+//        }
         
 //        tableView.reloadData()
+        if Auth.auth().currentUser == nil {
+            print("Go back to login page")
+        } else {
+            print("You are signed in")
+        }
         startListening()
     }
     
