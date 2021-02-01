@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signInButton: GIDSignInButton!
     let showListSegueIdentifier = "ShowListSegue"
     let REGISTRY_TOKEN = "c8c403c0-b1fb-4573-89dc-54096e00c2ad"
+    var rosefireName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +33,7 @@ class LoginViewController: UIViewController {
             print("Someone is already signed in")
             self.performSegue(withIdentifier: self.showListSegueIdentifier, sender: self)
         }
+        rosefireName = nil
     }
     
     @IBAction func pressedSignInNewUser(_ sender: Any) {
@@ -66,6 +68,7 @@ class LoginViewController: UIViewController {
                 print("Rosefire sign in error \(err)")
                 return
             }
+            self.rosefireName = result!.name!
             Auth.auth().signIn(withCustomToken: result!.token) { (authResult, error) in
                 if let error = error {
                     print("Firebase sign in error \(error)")
@@ -74,5 +77,12 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: self.showListSegueIdentifier, sender: self)
             }
         })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == showListSegueIdentifier {
+            print("Checking for user \(Auth.auth().currentUser!.uid)")
+            UserManager.shared.addNewUserMaybe(uid: Auth.auth().currentUser!.uid, name: rosefireName ?? "", photoUrl: Auth.auth().currentUser!.photoURL?.absoluteString)
+        }
     }
 }

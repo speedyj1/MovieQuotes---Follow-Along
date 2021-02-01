@@ -10,6 +10,7 @@
 		1A1751D525C7AF2300AC27D4 /* SideNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1751D425C7AF2300AC27D4 /* SideNavViewController.swift */; };
 		1A1751D825C7B68300AC27D4 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1751D725C7B68300AC27D4 /* ProfilePageViewController.swift */; };
 		1A1751DB25C7B9CD00AC27D4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1751DA25C7B9CD00AC27D4 /* Constants.swift */; };
+		1A1751DE25C7BDF000AC27D4 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1751DD25C7BDF000AC27D4 /* UserManager.swift */; };
 		1A40BC2225AFE4C200834D77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A40BC2125AFE4C200834D77 /* GoogleService-Info.plist */; };
 		1A42094C25AE110100077A5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42094B25AE110100077A5E /* AppDelegate.swift */; };
 		1A42094E25AE110100077A5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42094D25AE110100077A5E /* SceneDelegate.swift */; };
@@ -29,6 +30,7 @@
 		1A1751D425C7AF2300AC27D4 /* SideNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavViewController.swift; sourceTree = "<group>"; };
 		1A1751D725C7B68300AC27D4 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		1A1751DA25C7B9CD00AC27D4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1A1751DD25C7BDF000AC27D4 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		1A40BC2125AFE4C200834D77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1A42094825AE110100077A5E /* MovieQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A42094B25AE110100077A5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				1A1751D425C7AF2300AC27D4 /* SideNavViewController.swift */,
 				1A1751D725C7B68300AC27D4 /* ProfilePageViewController.swift */,
 				1A1751DA25C7B9CD00AC27D4 /* Constants.swift */,
+				1A1751DD25C7BDF000AC27D4 /* UserManager.swift */,
 			);
 			path = MovieQuotes;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				1A42096B25AE29CF00077A5E /* MovieQuoteDetailViewController.swift in Sources */,
 				1A42094E25AE110100077A5E /* SceneDelegate.swift in Sources */,
 				1A42096525AE165600077A5E /* MovieQuotesTableViewController.swift in Sources */,
+				1A1751DE25C7BDF000AC27D4 /* UserManager.swift in Sources */,
 				1A1751D525C7AF2300AC27D4 /* SideNavViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
