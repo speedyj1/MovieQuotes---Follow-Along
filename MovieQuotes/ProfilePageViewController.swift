@@ -35,7 +35,15 @@ class ProfilePageViewController: UIViewController {
     }
     
     @IBAction func pressedEditPhoto(_ sender: Any) {
-        print("Upload photo")
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.allowsEditing = true
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePickerController.sourceType = .camera
+        } else {
+            imagePickerController.sourceType = .photoLibrary
+        }
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     func updateView() {
@@ -43,5 +51,21 @@ class ProfilePageViewController: UIViewController {
         if UserManager.shared.photoUrl.count > 0 {
             ImageUtils.load(imageView: profilePhotoImageView, from: UserManager.shared.photoUrl)
         }
+    }
+}
+
+extension ProfilePageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage? {
+            profilePhotoImageView.image = image
+        } else if let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage? {
+            profilePhotoImageView.image = image
+        }
+        picker.dismiss(animated: true)
     }
 }
