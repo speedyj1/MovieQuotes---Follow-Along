@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A1751D525C7AF2300AC27D4 /* SideNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1751D425C7AF2300AC27D4 /* SideNavViewController.swift */; };
 		1A40BC2225AFE4C200834D77 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1A40BC2125AFE4C200834D77 /* GoogleService-Info.plist */; };
 		1A42094C25AE110100077A5E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42094B25AE110100077A5E /* AppDelegate.swift */; };
 		1A42094E25AE110100077A5E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42094D25AE110100077A5E /* SceneDelegate.swift */; };
@@ -17,11 +18,13 @@
 		1A42096525AE165600077A5E /* MovieQuotesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42096425AE165600077A5E /* MovieQuotesTableViewController.swift */; };
 		1A42096825AE186700077A5E /* MovieQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42096725AE186700077A5E /* MovieQuote.swift */; };
 		1A42096B25AE29CF00077A5E /* MovieQuoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A42096A25AE29CF00077A5E /* MovieQuoteDetailViewController.swift */; };
+		1AF868B125C11A3100793EF7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AF868B025C11A3100793EF7 /* LoginViewController.swift */; };
 		D114948B4E0359912E545B19 /* Pods_MovieQuotes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF99150362680EE172D5FDA0 /* Pods_MovieQuotes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		186FDC1B76050C7971657496 /* Pods-MovieQuotes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieQuotes.debug.xcconfig"; path = "Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes.debug.xcconfig"; sourceTree = "<group>"; };
+		1A1751D425C7AF2300AC27D4 /* SideNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavViewController.swift; sourceTree = "<group>"; };
 		1A40BC2125AFE4C200834D77 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1A42094825AE110100077A5E /* MovieQuotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieQuotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A42094B25AE110100077A5E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		1A42096425AE165600077A5E /* MovieQuotesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuotesTableViewController.swift; sourceTree = "<group>"; };
 		1A42096725AE186700077A5E /* MovieQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuote.swift; sourceTree = "<group>"; };
 		1A42096A25AE29CF00077A5E /* MovieQuoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuoteDetailViewController.swift; sourceTree = "<group>"; };
+		1AF868B025C11A3100793EF7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BF99150362680EE172D5FDA0 /* Pods_MovieQuotes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieQuotes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE168F89968FB41D5C315106 /* Pods-MovieQuotes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieQuotes.release.xcconfig"; path = "Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +86,8 @@
 				1A42096425AE165600077A5E /* MovieQuotesTableViewController.swift */,
 				1A42096725AE186700077A5E /* MovieQuote.swift */,
 				1A42096A25AE29CF00077A5E /* MovieQuoteDetailViewController.swift */,
+				1AF868B025C11A3100793EF7 /* LoginViewController.swift */,
+				1A1751D425C7AF2300AC27D4 /* SideNavViewController.swift */,
 			);
 			path = MovieQuotes;
 			sourceTree = "<group>";
@@ -115,6 +121,7 @@
 				1A42094525AE110100077A5E /* Frameworks */,
 				1A42094625AE110100077A5E /* Resources */,
 				88EE780E741433AF26D9396D /* [CP] Embed Pods Frameworks */,
+				B09FB5EA5DC65EACD3AC8326 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -189,6 +196,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B09FB5EA5DC65EACD3AC8326 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D2EBF9149C78456B18E0C734 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -221,9 +245,11 @@
 				1A42095025AE110100077A5E /* ViewController.swift in Sources */,
 				1A42094C25AE110100077A5E /* AppDelegate.swift in Sources */,
 				1A42096825AE186700077A5E /* MovieQuote.swift in Sources */,
+				1AF868B125C11A3100793EF7 /* LoginViewController.swift in Sources */,
 				1A42096B25AE29CF00077A5E /* MovieQuoteDetailViewController.swift in Sources */,
 				1A42094E25AE110100077A5E /* SceneDelegate.swift in Sources */,
 				1A42096525AE165600077A5E /* MovieQuotesTableViewController.swift in Sources */,
+				1A1751D525C7AF2300AC27D4 /* SideNavViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

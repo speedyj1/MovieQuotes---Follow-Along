@@ -11,6 +11,9 @@ target 'MovieQuotes' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
   pod 'Firebase/Auth'
+  pod 'Rosefire', :git => 'https://ada.csse.rose-hulman.edu/rosefire/ios-sdk.git'
+  pod 'GoogleSignIn'
+  pod 'SideMenu'
   post_install do |installer|
     installer.generated_projects.each do |project|
       project.targets.each do |target|
