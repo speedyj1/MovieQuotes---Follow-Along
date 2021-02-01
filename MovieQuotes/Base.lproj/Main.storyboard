@@ -57,6 +57,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="nFr-SU-frJ" kind="show" identifier="ProfilePageSegue" id="GDa-AM-oro"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RIE-Wv-dAY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,7 +119,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DpC-IY-qD4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1824.6376811594205" y="20.758928571428569"/>
+            <point key="canvasLocation" x="2172" y="-263"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Q4D-Qf-PZI">
@@ -455,10 +458,74 @@
             </objects>
             <point key="canvasLocation" x="247.82608695652175" y="735.9375"/>
         </scene>
+        <!--Profile Page View Controller-->
+        <scene sceneID="7sI-bj-CIc">
+            <objects>
+                <viewController id="nFr-SU-frJ" customClass="ProfilePageViewController" customModule="MovieQuotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VfI-HQ-8h5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LxJ-Vu-KbJ">
+                                <rect key="frame" x="107" y="128" width="200" height="337"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsL-yi-eqM">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="op2-tr-Blf">
+                                        <rect key="frame" x="0.0" y="30.5" width="200" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oHV-yE-4qx">
+                                        <rect key="frame" x="0.0" y="74.5" width="200" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p0H-QK-AVc">
+                                        <rect key="frame" x="0.0" y="105" width="200" height="22"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="edit_18pt"/>
+                                        <connections>
+                                            <action selector="pressedEditPhoto:" destination="nFr-SU-frJ" eventType="touchUpInside" id="Aio-qE-CF1"/>
+                                        </connections>
+                                    </button>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hZB-ip-Mh2">
+                                        <rect key="frame" x="0.0" y="137" width="200" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="RcF-BO-QxE"/>
+                                            <constraint firstAttribute="width" constant="200" id="mJr-AI-nYx"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PSA-te-R95"/>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LxJ-Vu-KbJ" firstAttribute="top" secondItem="PSA-te-R95" secondAttribute="top" constant="40" id="U0i-AN-2wa"/>
+                            <constraint firstItem="LxJ-Vu-KbJ" firstAttribute="centerX" secondItem="PSA-te-R95" secondAttribute="centerX" id="jcQ-i4-QmM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HZ9-Zw-6fm"/>
+                    <connections>
+                        <outlet property="displayNameTextField" destination="op2-tr-Blf" id="OQ3-xm-JPN"/>
+                        <outlet property="profilePhotoImageView" destination="hZB-ip-Mh2" id="0h3-93-bpR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PHy-u5-HCT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2171" y="449"/>
+        </scene>
     </scenes>
     <resources>
         <image name="account_box_36pt" width="36" height="36"/>
         <image name="delete_36pt" width="36" height="36"/>
+        <image name="edit_18pt" width="18" height="18"/>
         <image name="logout_36pt" width="36" height="36"/>
         <image name="people_alt_36pt" width="36" height="36"/>
         <image name="person_36pt" width="36" height="36"/>
