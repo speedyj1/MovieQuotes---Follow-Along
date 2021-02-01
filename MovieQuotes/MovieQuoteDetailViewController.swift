@@ -12,6 +12,9 @@ import FirebaseAuth
 class MovieQuoteDetailViewController: UIViewController {
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var movieLabel: UILabel!
+    @IBOutlet weak var authorBox: UIStackView!
+    @IBOutlet weak var authorProfilePhotoImageView: UIImageView!
+    @IBOutlet weak var authorName: UILabel!
     var movieQuote: MovieQuote?
     var movieQuoteRef: DocumentReference!
     var movieQuoteListener: ListenerRegistration!
@@ -22,6 +25,7 @@ class MovieQuoteDetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        authorBox.isHidden = true
 //        updateView()
         movieQuoteListener = movieQuoteRef.addSnapshotListener { (documentSnapshot, error) in
             if let error = error {
@@ -38,6 +42,7 @@ class MovieQuoteDetailViewController: UIViewController {
             } else {
                 self.navigationItem.rightBarButtonItem = nil
             }
+            UserManager.shared.beginListening(uid: self.movieQuote!.author, changeListener: self.updateAuthorBox)
             self.updateView()
         }
     }
@@ -74,5 +79,16 @@ class MovieQuoteDetailViewController: UIViewController {
     func updateView() {
         quoteLabel.text = movieQuote?.quote
         movieLabel.text = movieQuote?.movie
+    }
+    
+    func updateAuthorBox() {
+        print("Update author box for \(UserManager.shared.name)")
+        authorBox.isHidden = !(UserManager.shared.name.count > 0 || UserManager.shared.photoUrl.count > 0)
+        if UserManager.shared.name.count > 0 {
+            authorName.text = UserManager.shared.name
+        }
+        if UserManager.shared.photoUrl.count > 0 {
+            ImageUtils.load(imageView: authorProfilePhotoImageView, from: UserManager.shared.photoUrl)
+        }
     }
 }

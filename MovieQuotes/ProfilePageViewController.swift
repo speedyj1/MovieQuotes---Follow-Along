@@ -71,6 +71,10 @@ class ProfilePageViewController: UIViewController {
                     }
                 }
             }
+            uploadTask.observe(.progress){ (snapshot) in
+                guard let progress = snapshot.progress else {return}
+                print("Progress \(progress)")
+            }
         } else {
             print("Error getting image data")
         }
